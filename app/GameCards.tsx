@@ -97,14 +97,15 @@ const GameCards = () => {
         display: "flex",
         justifyContent: "center",
         paddingBlock: 100,
+        paddingInline: 16,
         overflow: "hidden",
       }}
     >
       <div
         style={{
           position: "relative",
-          width: "300px",
-          height: "300px",
+          width: "100%",
+          height: "433px",
           display: "flex",
         }}
       >
