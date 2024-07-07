@@ -45,12 +45,13 @@ const GameCard = ({ data, setDirection }: Props) => {
       <motion.div
         drag="x"
         dragSnapToOrigin
-        dragElastic={0.06}
+        dragElastic={0.2}
         dragConstraints={{ left: 0, right: 0 }}
         dragTransition={{ bounceStiffness: 1000, bounceDamping: 50 }}
         onDragEnd={(_, info) => {
+          const boundary = 100;
           const isOffBoundary =
-            info.offset.x > offsetBoundary || info.offset.x < -offsetBoundary;
+            info.offset.x > boundary || info.offset.x < -boundary;
           const direction = info.offset.x > 0 ? "right" : "left";
 
           if (isOffBoundary) {

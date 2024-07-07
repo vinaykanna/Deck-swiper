@@ -37,6 +37,7 @@ const initialCards = [
 const GameCards = () => {
   const [cards, setCards] = useState(initialCards);
   const [direction, setDirection] = useState("");
+  const [exitRotation, setExitRotation] = useState(0);
 
   useEffect(() => {
     if (["left", "right"].includes(direction)) {
@@ -61,13 +62,13 @@ const GameCards = () => {
     },
     second: {
       opacity: 1,
-      y: 60,
+      y: 30,
       scale: 0.9,
       transition: { duration: 0.3, ease: easeOutExpo, delay: 0 },
     },
     third: {
       opacity: 1,
-      y: 80,
+      y: 40,
       scale: 0.9,
       transition: { duration: 0.3, ease: easeOutExpo, delay: 0 },
     },
@@ -77,10 +78,10 @@ const GameCards = () => {
       scale: 0.9,
     },
     exit: {
+      opacity: 0,
       x: direction === "left" ? -1000 : 1000,
-      y: 40,
-      rotate: direction === "left" ? -30 : 30,
-      transition: { duration: 1, ease: easeOutExpo },
+      rotate: direction === "left" ? -100 : 100,
+      transition: { duration: 2, ease: easeOutExpo },
     },
   };
 
@@ -95,7 +96,8 @@ const GameCards = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        paddingTop: 100,
+        paddingBlock: 100,
+        overflow: "hidden",
       }}
     >
       <div
