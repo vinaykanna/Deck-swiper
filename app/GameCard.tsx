@@ -11,12 +11,17 @@ type Props = {
 const GameCard = ({ data, setDirection }: Props) => {
   const { affirmation } = data;
   const x = useMotionValue(0);
+
   const inputX = [50 * -1, 0, 50];
   const inputRotate = [150 * -1, 0, 150];
+  const inputY = [150 * -1, 0, 150];
   const outputX = [-200, 0, 200];
+  const outputY = [50, 0, 50];
   const outputRotate = [-40, 0, 40];
+
   const drivenX = useTransform(x, inputX, outputX);
   const drivenRotation = useTransform(x, inputRotate, outputRotate);
+  const drivenY = useTransform(x, inputY, outputY);
 
   return (
     <>
@@ -35,7 +40,7 @@ const GameCard = ({ data, setDirection }: Props) => {
             "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
           rotate: drivenRotation,
           x: drivenX,
-          transform: `translate3d()`,
+          y: drivenY,
         }}
       >
         <p>{affirmation}</p>

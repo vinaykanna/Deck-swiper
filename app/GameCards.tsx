@@ -37,7 +37,6 @@ const initialCards = [
 const GameCards = () => {
   const [cards, setCards] = useState(initialCards);
   const [direction, setDirection] = useState("");
-  const [exitRotation, setExitRotation] = useState(0);
 
   useEffect(() => {
     if (["left", "right"].includes(direction)) {
@@ -57,20 +56,20 @@ const GameCards = () => {
     first: {
       opacity: 1,
       y: 0,
-      scale: 1,
-      transition: { duration: 0.3, ease: easeOutExpo },
+      width: "100%",
+      transition: { duration: 0.5, ease: easeOutExpo },
     },
     second: {
       opacity: 1,
-      y: 30,
-      scale: 0.9,
-      transition: { duration: 0.3, ease: easeOutExpo, delay: 0 },
+      y: 15,
+      width: "95%",
+      transition: { duration: 0.5, ease: easeOutExpo, delay: 0 },
     },
     third: {
       opacity: 1,
-      y: 40,
-      scale: 0.9,
-      transition: { duration: 0.3, ease: easeOutExpo, delay: 0 },
+      y: 30,
+      width: "90%",
+      transition: { duration: 0.5, ease: easeOutExpo, delay: 0 },
     },
     remainings: {
       opacity: 0,
@@ -80,7 +79,7 @@ const GameCards = () => {
     exit: {
       opacity: 0,
       x: direction === "left" ? -1000 : 1000,
-      rotate: direction === "left" ? -100 : 100,
+      rotate: direction === "left" ? -50 : 50,
       transition: { duration: 2, ease: easeOutExpo },
     },
   };
@@ -107,6 +106,7 @@ const GameCards = () => {
           width: "100%",
           height: "433px",
           display: "flex",
+          justifyContent: "center",
         }}
       >
         <AnimatePresence>
@@ -115,7 +115,12 @@ const GameCards = () => {
               <motion.div
                 key={card.id}
                 id={`card-${card.id}`}
-                style={{ position: "absolute", width: "100%", height: "100%" }}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  margin: "auto",
+                }}
                 variants={cardVariants}
                 initial="remainings"
                 animate={visibleCards[`${i}`]}
